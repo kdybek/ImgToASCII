@@ -5,7 +5,7 @@ import numpy as np
 # Constants
 CHAR_HEIGHT = 16
 CHAR_WIDTH = 6
-ASCII_BY_BRIGHTNESS = r'$$$$$$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^``````''......          '
+ASCII_BY_BRIGHTNESS = r'$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`''....        '
 NUMBER_OF_ASCII = len(ASCII_BY_BRIGHTNESS)
 
 
@@ -23,11 +23,13 @@ image = cv2.imread('test1.jpg')
 
 resized_image, num_of_chars_x, num_of_chars_y = resize_img(image)
 
+gray_image = cv2.cvtColor(resized_image, cv2.COLOR_BGR2GRAY)
+
 new_img = np.zeros((num_of_chars_y, num_of_chars_x))
 
-for x in range(0, resized_image.shape[1], CHAR_WIDTH):
-    for y in range(0, resized_image.shape[0], CHAR_HEIGHT):
-        img_part = resized_image[y:y + CHAR_HEIGHT, x:x + CHAR_WIDTH]
+for x in range(0, gray_image.shape[1], CHAR_WIDTH):
+    for y in range(0, gray_image.shape[0], CHAR_HEIGHT):
+        img_part = gray_image[y:y + CHAR_HEIGHT, x:x + CHAR_WIDTH]
         part_avg = np.average(img_part)
         new_img[y // CHAR_HEIGHT, x // CHAR_WIDTH] = part_avg
 
