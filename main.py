@@ -27,7 +27,7 @@ def main():
     convert_img(img, args.chunk_h, args.chunk_w, equalize)
 
     if show_original:
-        show_img(img)
+        show_img(img, title='Original Image')
 
 
 if __name__ == '__main__':

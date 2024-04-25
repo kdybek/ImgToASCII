@@ -2,8 +2,7 @@ import cv2
 import numpy as np
 
 # Constants
-ASCII_BY_BRIGHTNESS = r'$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`''. '
-NUMBER_OF_ASCII = len(ASCII_BY_BRIGHTNESS)
+ASCII_BY_BRIGHTNESS = r'$$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`''. '
 RGB_MAX = 255
 
 
@@ -35,7 +34,7 @@ def get_chunk_averages(img, chunk_h, chunk_w):
 def print_as_ascii(img):
     for y in range(0, img.shape[0]):
         for x in range(0, img.shape[1]):
-            ascii_brightness = NUMBER_OF_ASCII - ((img[y, x] * NUMBER_OF_ASCII) // RGB_MAX) - 1
+            ascii_brightness = len(ASCII_BY_BRIGHTNESS) - 1 - (img[y, x] * (len(ASCII_BY_BRIGHTNESS) - 1) // RGB_MAX)
             print(ASCII_BY_BRIGHTNESS[ascii_brightness.astype(int)], end='')
         print()
 
