@@ -3,9 +3,9 @@ import numpy as np
 
 
 # Constants
-CHAR_HEIGHT = 16
-CHAR_WIDTH = 6
-ASCII_BY_BRIGHTNESS = r'$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`''....        '
+CHAR_HEIGHT = 3
+CHAR_WIDTH = 2
+ASCII_BY_BRIGHTNESS = r'$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~<>i!lI;:,"^`''. '
 NUMBER_OF_ASCII = len(ASCII_BY_BRIGHTNESS)
 
 
@@ -35,7 +35,7 @@ for x in range(0, gray_image.shape[1], CHAR_WIDTH):
 
 for y in range(0, num_of_chars_y):
     for x in range(0, num_of_chars_x):
-        ASCII_brightness = (new_img[y, x] * NUMBER_OF_ASCII // 255).astype(int)
+        ASCII_brightness = NUMBER_OF_ASCII - (new_img[y, x] * NUMBER_OF_ASCII // 255).astype(int)
         print(ASCII_BY_BRIGHTNESS[min(ASCII_brightness, NUMBER_OF_ASCII - 1)], end='')
     print()
 
