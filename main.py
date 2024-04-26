@@ -20,7 +20,7 @@ def main():
 
     args = parser.parse_args()
 
-    equalize = ask_yes_no_question("Equalize the image before conversion?")
+    equalize = ask_yes_no_question("Equalize the image histogram before conversion?")
     show_original = ask_yes_no_question("Show original image?")
 
     img = load_img(args.path)
